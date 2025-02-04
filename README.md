@@ -15,4 +15,10 @@ Language: C
 Compiler: GCC
 Tools: Visual Studio Code, CLI, Standard C Libraries
 
+Data Structures Used
+Arrays & Linked Lists – Store and manage event and user details.
+Stacks & Queues – Handle booking processes and undo/redo actions.
+Hash Tables – Enable fast retrieval of user and event data.
+Graphs & Trees – Model event locations, recommendations, and navigation.
+
 
