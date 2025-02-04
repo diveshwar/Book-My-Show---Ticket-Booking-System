@@ -21,4 +21,9 @@ Stacks & Queues – Handle booking processes and undo/redo actions.
 Hash Tables – Enable fast retrieval of user and event data.
 Graphs & Trees – Model event locations, recommendations, and navigation.
 
+Time Complexity Analysis
+Event Scheduling: O(1) – Constant time operations for adding events.
+User Registration: O(1) – Direct addition of user details.
+Display Events: O(n) – Iterates through all events.
+Ticket Booking: O(n) – Searches through events to update seat availability.
 
