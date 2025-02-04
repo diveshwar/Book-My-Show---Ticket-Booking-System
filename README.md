@@ -27,3 +27,7 @@ User Registration: O(1) – Direct addition of user details.
 Display Events: O(n) – Iterates through all events.
 Ticket Booking: O(n) – Searches through events to update seat availability.
 
+Conclusion
+This project delivers an efficient, scalable, and secure solution for ticket booking systems by leveraging optimized data structures and algorithms. With features like real-time seat allocation, queue management, and secure transactions, it enhances the overall booking experience while ensuring performance and reliability.
+
+
