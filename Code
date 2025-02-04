@@ -1,0 +1,141 @@
+#include <stdio.h>
+#include <stdbool.h>
+#include <string.h>
+
+#define MAX_EVENTS 100
+#define MAX_USERS 100
+#define MAX_TICKETS 10
+
+struct Event {
+    int eventID;
+    char name[50];
+    int availableTickets;
+};
+
+struct User {
+    int userID;
+    char username[50];
+};
+
+struct Ticket {
+    int ticketID;
+    int eventID;
+    int userID;
+};
+
+struct Event events[MAX_EVENTS];
+int eventsCount = 0;
+
+struct User users[MAX_USERS];
+int usersCount = 0;
+
+struct Ticket tickets[MAX_TICKETS];
+int ticketsCount = 0;
+
+void scheduleEvent() {
+    char name[50];
+    int availableTickets;
+
+    if (eventsCount < MAX_EVENTS) {
+        printf("Enter event name: ");
+        scanf("%s", name);
+
+        printf("Enter available tickets: ");
+        scanf("%d", &availableTickets);
+
+        events[eventsCount].eventID = eventsCount + 1;
+        strcpy(events[eventsCount].name, name);
+        events[eventsCount].availableTickets = availableTickets;
+        eventsCount++;
+        printf("Event scheduled: %s\n", name);
+    } else {
+        printf("Event scheduling failed. Maximum events reached.\n");
+    }
+}
+
+void displayEvents() {
+    printf("Available Events:\n");
+    for (int i = 0; i < eventsCount; i++) {
+        printf("%d. %s - Tickets available: %d\n", events[i].eventID, events[i].name, events[i].availableTickets);
+    }
+}
+
+void addUser() {
+    char username[50];
+    int userID;
+
+    if (usersCount < MAX_USERS) {
+        printf("Enter user ID: ");
+        scanf("%d", &userID);
+
+        printf("Enter username: ");
+        scanf("%s", username);
+
+        users[usersCount].userID = userID;
+        strcpy(users[usersCount].username, username);
+        usersCount++;
+        printf("User added: %s\n", username);
+    } else {
+        printf("User addition failed. Maximum users reached.\n");
+    }
+}
+
+void bookTicket() {
+    int eventID, userID;
+
+    if (ticketsCount < MAX_TICKETS) {
+        printf("Enter event ID to book a ticket: ");
+        scanf("%d", &eventID);
+
+        printf("Enter user ID for booking: ");
+        scanf("%d", &userID);
+
+        tickets[ticketsCount].ticketID = ticketsCount + 1;
+        tickets[ticketsCount].eventID = eventID;
+        tickets[ticketsCount].userID = userID;
+
+        // Decrease available tickets for the booked event
+        for (int i = 0; i < eventsCount; i++) {
+            if (events[i].eventID == eventID) {
+                events[i].availableTickets--;
+                break;
+            }
+        }
+
+        printf("Ticket booked for Event %d by User %d\n", eventID, userID);
+        ticketsCount++;
+    } else {
+        printf("Ticket booking failed. Maximum tickets reached.\n");
+    }
+}
+
+int main() {
+    int choice;
+
+    do {
+        printf("\n1. Schedule Event\n2. Display Available Events\n3. Add User\n4. Book Ticket\n5. Exit\nEnter your choice: ");
+        scanf("%d", &choice);
+
+        switch (choice) {
+            case 1:
+                scheduleEvent();
+                break;
+            case 2:
+                displayEvents();
+                break;
+            case 3:
+                addUser();
+                break;
+            case 4:
+                bookTicket();
+                break;
+            case 5:
+                printf("Exiting...\n");
+                break;
+            default:
+                printf("Invalid choice. Please enter a valid option.\n");
+        }
+    } while (choice != 5);
+
+    return 0;
+}
