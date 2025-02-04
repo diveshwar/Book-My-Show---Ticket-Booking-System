@@ -10,3 +10,9 @@ Queue Management – Handles high-demand events, preventing server overload.
 Optimized Search & Recommendation – Uses data structures for faster event discovery.
 Secure Transactions – Ensures safe and reliable payment processing.
 
+Tech Stack
+Language: C
+Compiler: GCC
+Tools: Visual Studio Code, CLI, Standard C Libraries
+
+
